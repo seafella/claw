@@ -1,6 +1,13 @@
 # claw
 
-Perfect — Windows 11 Pro + Hyper-V + built-in tools is exactly the right foundation. I’ll keep this practical, tight, and “do this in order,” with a clear path to GPU sharing (GPU-P) so you can run open models inside the VM.
+Windows 11 Pro + Hyper-V + built-in tools (GPU  Sharing)
+
+
+Enable Hyper-V
+
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+Enable-WindowsOptionalFeature -Online -FeatureName HypervisorPlatform -All
+Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform -All
 
 ⸻
 
