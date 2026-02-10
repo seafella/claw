@@ -1,0 +1,83 @@
+{
+  "agents": {
+    "defaults": {
+      "workspace": "/home/claw/.openclaw/workspace",
+      "model": {
+        // This uses your local LM Studio model
+        "primary": "lmstudio/qwen3-coder-next"
+      }
+    }
+  },
+
+  // Define your local models
+  "models": {
+    "lmstudio/qwen3-coder-next": {
+      "provider": "lmstudio-local",
+      // This ID must match the "loaded_instance" variant from your model list
+      "id": "qwen/qwen3-coder-next@q4_k_m"
+    }
+  },
+
+  "gateway": {
+    "mode": "local",
+
+    // Local auth mode — keep your existing token
+    "auth": {
+      "mode": "token",
+      "token": "178a939f61db8a97c53cad5c8e09e3cbd66c0520d06e28cd"
+    },
+
+    // Default gateway port
+    "port": 18789,
+    "bind": "loopback",
+
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    },
+
+    // Where the gateway should route model calls
+    "providers": {
+      "lmstudio-local": {
+        // Replace <host-ip> and <port> with your host/LM Studio values
+        "baseUrl": "http://<host-ip>:<port>/v1",
+        "apiKey": "local",
+        "api": "openai-responses"
+      }
+    }
+  },
+
+  // Optional — commands you want to deny (you had these already)
+  "nodes": {
+    "denyCommands": [
+      "camera.snap",
+      "camera.clip",
+      "screen.record",
+      "calendar.add",
+      "contacts.add",
+      "reminders.add"
+    ]
+  },
+
+  // Skills section is fine as-is
+  "skills": {
+    "install": {
+      "nodeManager": "npm"
+    }
+  },
+
+  // Hooks you already enabled
+  "hooks": {
+    "internal": {
+      "enabled": true,
+      "entries": {
+        "command-logger": {
+          "enabled": true
+        }
+      },
+      "boot-md": {
+        "enabled": true
+      }
+    }
+  }
+}
